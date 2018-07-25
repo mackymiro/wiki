@@ -1,0 +1,13 @@
+public users[3][2]
+users[0][0]="hostname0"
+users[0][1]="user0"
+users[0][2]="pwd0"
+users[1][0]="hostname1"
+users[1][1]="user1"
+users[1][2]="pwd1"
+users[2][0]="hostname2"
+users[2][1]="user2"
+users[2][2]="pwd2"
+users[3][0]="hostname3"
+users[3][1]="user3"
+users[3][2]="pwd3"

@@ -1,0 +1,134 @@
+; This script was created using Pulover's Macro Creator                                                                        
+; www.macrocreator.com                                                                        
+
+#NoEnv                                            ; Options ( modify this during Export to AHK script or by pressing CTRL + E )                            
+SetWorkingDir %A_ScriptDir%                       ; Options ( modify this during Export to AHK script or by pressing CTRL + E )                            
+CoordMode, Mouse, Window                          ; Options ( modify this during Export to AHK script or by pressing CTRL + E )                            
+SendMode Input                                    ; Options ( modify this during Export to AHK script or by pressing CTRL + E )                            
+#SingleInstance Force                             ; Options ( modify this during Export to AHK script or by pressing CTRL + E )                            
+SetTitleMatchMode 2                               ; Options ( modify this during Export to AHK script or by pressing CTRL + E )                            
+#WinActivateForce                                 ; Options ( modify this during Export to AHK script or by pressing CTRL + E )                            
+SetControlDelay 1                                 ; Options ( modify this during Export to AHK script or by pressing CTRL + E )                            
+SetWinDelay 0                                     ; Options ( modify this during Export to AHK script or by pressing CTRL + E )                            
+SetKeyDelay -1                                    ; Options ( modify this during Export to AHK script or by pressing CTRL + E )                            
+SetMouseDelay -1                                  ; Options ( modify this during Export to AHK script or by pressing CTRL + E )                            
+SetBatchLines -1                                  ; Options ( modify this during Export to AHK script or by pressing CTRL + E )                            
+
+F5::                                              ; Add hotkey F5 ( can be modified by pressing CTRL + SHIFT + M or go to Command toolbar then Edit Macros )                            
+Macro1:                                           ; Label/Macro name ( can be modified by pressing CTRL + SHIFT + M or go to Command toolbar then Edit Macros )                            
+hosts := [ { hostname: "[hostname]", username: "[username]", password: "[password]" } ]  ; List of all hosts and host credentials ( can be modified by pressing Enter or double click )                                                                        
+For key in hosts                                  ; Loop variable hosts ( can be modified by pressing Enter or double click )                                                                        
+{                                                                        
+    Sleep, 2000                                   ; Sleep/Wait for 2 secs ( can be modified by pressing Enter or double click )                                                                        
+    Run, mstsc.exe                                ; Run "Remote Desktop Connection" exe ( can be modified by pressing Enter or double click )                                                                        
+    Sleep, 3000                                   ; Sleep/Wait for 3 secs ( can be modified by pressing Enter or double click )                                                                        
+    ConnectToHost(hosts[key].hostname)            ; Call function ConnectToHost and pass hostname ( can be modified by pressing Enter or double click )                                                                        
+    Sleep, 3000                                   ; Sleep/Wait for 3 secs ( can be modified by pressing Enter or double click )                                                                        
+    LoginToHost(hosts[key])                       ; Call function LoginToHost and pass host credenitals ( can be modified by pressing Enter or double click )                                                                        
+    Sleep, 6000                                   ; Sleep/Wait for 6 secs ( can be modified by pressing Enter or double click )                                                                        
+    TargetHostTasks(hosts[key])                   ; Call function TargetHostTasks and pass host credentials ( can be modified by pressing Enter or double click )                                                                        
+}                                                                        
+MsgBox, 0, , All tasks are done                   ; Show message "All tasks are done" ( can be modified by pressing Enter or double click )                                                                        
+Return                                                                        
+
+ConnectToHost(hostname)                           ; Function ConnectToHost that accept hostname ( can be modified by pressing Enter or double click )                                                                        
+{                                                                        
+    ControlSetText, Edit1, %hostname%, Remote Desktop Connection ahk_class #32770  ; Input hostname to "Computer" field ( can be modified by pressing Enter or double click )                                                                        
+    ControlClick, Button5, Remote Desktop Connection ahk_class #32770,, Left, 1,  NA  ; Click "Connect" button ( can be modified by pressing Enter or double click )                                                                        
+    Sleep, 10                                                                        
+}                                                                        
+
+LoginToHost(credentials)                          ; Function LoginToHost that accept host credenitals ( can be modified by pressing Enter or double click )                                                                        
+{                                                                        
+    inputNumber := 1                              ; Create variable "inputNumber" and set to 1                                                                        
+    ControlGet, usernameField, Visible, , Edit2, Windows Security ahk_class #32770  ; Check if "Username" field is accessible/not in the interface ( can be modified by pressing Enter or double click )                                                                        
+    If usernameField != 1                         ; Check if "Username" field is not accessible in the interface ( can be modified by pressing Enter or double click )                                                                        
+    {                                                                        
+        ControlClick, DirectUIHWND1, Windows Security ahk_class #32770,, Left, 1,  NA  ; Click "Use another account" field ( can be modified by pressing Enter or double click )                                                                        
+        Sleep, 100                                                                        
+        inputNumber := 2                         ; Set variable "inputNumber" to 2 ( can be modified by pressing Enter or double click )                                                                        
+    }                                                                        
+    Sleep, 1000                                  ; Sleep/Wait for 1 sec ( can be modified by pressing Enter or double click )                                                                        
+    ControlSetText, Edit%inputNumber%, % credentials.username, Windows Security ahk_class #32770  ; Input host username in "Username" field ( can be modified by pressing Enter or double click )                                                                        
+    inputNumber += 1                             ; Increment by 1 variable "inputNumber" ( can be modified by pressing Enter or double click )                                                                        
+    Sleep, 1000                                  ; Sleep/Wait for 1 sec ( can be modified by pressing Enter or double click )                                                                        
+    ControlSetText, Edit%inputNumber%, % credentials.password, Windows Security ahk_class #32770  ; Input host password in "Password" field ( can be modified by pressing Enter or double click )                                                                        
+    Sleep, 1000                                  ; Sleep/Wait for 1 sec ( can be modified by pressing Enter or double click )                                                                        
+    ControlClick, Button2, Windows Security ahk_class #32770,, Left, 1,  NA  ; Click "Ok" button ( can be modified by pressing Enter or double click )                                                                        
+    Sleep, 10                                                                        
+    Sleep, 2000                                  ; Sleep/Wait for 2 secs ( can be modified by pressing Enter or double click )                                                                        
+    ControlClick, Button5, Remote Desktop Connection ahk_class #32770,, Left, 1,  NA  ; Click "Yes" button ( can be modified by pressing Enter or double click )                                                                        
+    Sleep, 10                                                                        
+}                                                                        
+
+TargetHostTasks(credentials)                     ; Function TargetHostTasks that accept host credentials ( can be modified by pressing Enter or double click )                                                                        
+{                                                                        
+    helloWorld := [ "H", "e", "l", "l", "o", "Space", "W", "o", "r", "l", "d" ]  ; Create variable helloWorld and set to list of hotkeys ( can be modified by pressing Enter or double click )                                                                        
+    WinGetPos, hostX, hostY, hostW, hostH, % credentials.hostname - Remote Desktop Connection ahk_class TscShellContainerClass  ; Get window position of "[hostname] - Remote Desktop Connection" ( can be modified by pressing Enter or double click )                                                                        
+    If (hostW != A_ScreenWidth or hostH != A_ScreenHeight)  ; Check if "[hostname] - Remote Desktop Connection" window is not maximize ( can be modified by pressing Enter or double click )                                                                        
+    {                                                                        
+        Send, ^!{CtrlBreak}                      ; Send keystroke ALT DOWN + CTRL DOWN + CTRL BREAK ( can be modified by pressing Enter or double click )                                                                        
+    }                                                                        
+    Random, randomNumber, 0, 999                 ; create variable "randomNumber" and set to random 0 - 999  ( can be modified by pressing Enter or double click )                                                                        
+    Sleep, 1000                                  ; Sleep/Wait for 1 sec ( can be modified by pressing Enter or double click )                                                                        
+    If (Mod(randomNumber, 2))                    ; Check if variable "randomNumber" is odd ( can be modified by pressing Enter or double click )                                                                        
+    {                                                                        
+        UsingControlSend(credentials, helloWorld) ; Call function "UsingControlSend" and pass host credentials and helloWorld array ( can be modified by pressing Enter or double click )                                                                        
+    }                                                                        
+    Else                                                                        
+    {                                                                        
+        UsingImageSearch(credentials, helloWorld) ; Call function "UsingImageSearch" and pass host credentials and helloWorld array ( can be modified by pressing Enter or double click )                                                                        
+    }                                                                        
+    Sleep, 1000                                  ; Sleep/Wait for 1 sec ( can be modified by pressing Enter or double click )                                                                        
+    ControlSend, , !{F4}, % credentials.hostname - Remote Desktop Connection ahk_class TscShellContainerClass  ; Send keystroke ALT DOWN + F4 to window "[hostname] - Remote Desktop Connection" ( can be modified by pressing Enter or double click )                                                                        
+    Sleep, 1000                                  ; Sleep/Wait for 1 sec ( can be modified by pressing Enter or double click )                                                                        
+    ControlSend, , {n}, % credentials.hostname - Remote Desktop Connection ahk_class TscShellContainerClass  ; Send keystroke "n" to window "[hostname] - Remote Desktop Connection" ( can be modified by pressing Enter or double click )                                                                        
+    Sleep, 1000                                  ; Sleep/Wait for 1 sec ( can be modified by pressing Enter or double click )                                                                        
+    WinClose, % credentials.hostname - Remote Desktop Connection ahk_class TscShellContainerClass  ; Close window "[hostname] - Remote Desktop Connection" ( can be modified by pressing Enter or double click )                                                                        
+    Sleep, 333                                                                        
+    IfWinExist, Remote Desktop Connection        ; Check if window close confirmation ( can be modified by pressing Enter or double click )                                                                        
+    {                                                                        
+        Sleep, 1000                              ; Sleep/Wait for 1 sec ( can be modified by pressing Enter or double click )                                                                        
+        ControlClick, Button1, Remote Desktop Connection,, Left, 1,  NA  ; Click "OK" button ( can be modified by pressing Enter or double click )                                                                        
+        Sleep, 10                                                                        
+    }                                                                        
+}                                                                        
+
+UsingControlSend(credentials, helloWorld)        ; Function UsingControlSend that accept host credentials and helloWorld ( can be modified by pressing Enter or double click )                                                                        
+{                                                                        
+    ControlSend, , {LWin}, % credentials.hostname - Remote Desktop Connection ahk_class TscShellContainerClass  ; Send keystroken LWin to window "[hostname] - Remote Desktop Connection" ( can be modified by pressing Enter or double click )                                                                        
+    Sleep, 1000                                  ; Sleep/Wait for 1 sec ( can be modified by pressing Enter or double click )                                                                        
+    ControlSend, , Notepad{Enter}, % credentials.hostname - Remote Desktop Connection ahk_class TscShellContainerClass  ; Send keystroke Notepad + Enter to window "[hostname] - Remote Desktop Connection" ( can be modified by pressing Enter or double click )                                                                        
+    Sleep, 1000                                  ; Sleep/Wait for 1 sec ( can be modified by pressing Enter or double click )                                                                        
+    For key, value in helloWorld                 ; Loop helloWorld variable ( can be modified by pressing Enter or double click )                                                                        
+    {                                                                        
+        Sleep, 300                               ; Sleep/Wait for .3 sec ( can be modified by pressing Enter or double click )                                                                        
+        ControlSend, , {%value%}, % credentials.hostname - Remote Desktop Connection ahk_class TscShellContainerClass  ; Send keystroke variable "value" ( can be modified by pressing Enter or double click )                                                                        
+    }                                                                        
+}                                                                        
+
+UsingImageSearch(credentials, helloWorld)        ; Function UsingImageSearch that accept host credentials and helloWorld ( can be modified by pressing Enter or double click )                                                                        
+{                                                                        
+    CoordMode, Pixel, Screen                                                                        
+    ImageSearch, FoundX, FoundY, 0, 0, 1920, 1080, C:\Users\balicante.rm\Desktop\OSS-TechCenter\02 Engineering\03 Coding\Windows Automation\Pulover's Macro Creator\Screen_20171026140747.png                                                                        
+    If ErrorLevel                                                                        
+    {                                                                        
+        MsgBox, 49, Continue?, Image / Pixel Not Found.`nPress OK to continue.                                                                        
+        IfMsgBox, Cancel                                                                        
+            Return                                                                    
+    }  ; Search image based from img file and set CoordMode to "Pixel" ( can be modified by pressing Enter or double click )                                                                        
+    If ErrorLevel = 0                            ; Check if image file is found ( can be modified by pressing Enter or double click )                                                                        
+    {                                                                        
+        Sleep, 1000                              ; Sleep/Wait for 1 sec ( can be modified by pressing Enter or double click )                                                                        
+        Click, %FoundX%, %FoundY% Right, 1       ; Right click icon based from image position ( can be modified by pressing Enter or double click )                                                                        
+        Sleep, 100                                                                        
+        Sleep, 1000                              ; Sleep/Wait for 1 sec ( can be modified by pressing Enter or double click )                                                                        
+        ControlSend, , {o}, % credentials.hostname - Remote Desktop Connection ahk_class TscShellContainerClass  ; Send keystroke "o" to window "[hostname] - Remote Desktop Connection" ( can be modified by pressing Enter or double click )                                                                        
+        Sleep, 1000                              ; Sleep/Wait for 1 sec ( can be modified by pressing Enter or double click )                                                                        
+        For key, value in helloWorld             ; Loop variable helloWorld ( can be modified by pressing Enter or double click )                                                                        
+        {                                                                        
+            Sleep, 300                           ; Sleep/Wait for .3 sec ( can be modified by pressing Enter or double click )                                                                        
+            ControlSend, , {%value%}, % credentials.hostname - Remote Desktop Connection ahk_class TscShellContainerClass  ; Send keystroke variable "value" ( can be modified by pressing Enter or double click )                                                                        
+        }                                                                        
+    }                                                                        
+}                                                                        

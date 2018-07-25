@@ -1,0 +1,90 @@
+<?php get_header(); ?>
+
+	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+
+		<!-- =========================
+					START CONTACT FORM AREA
+		============================== -->
+    <section class="contact page question-answer-section">
+         <div class="section_overlay">
+             <div class="container">
+                 <div class="col-md-12 wow bounceIn padding-lr-0">
+                   <div class="section_title padding-top-40 ">
+											<?php the_field('page_description', false, false); ?>
+                   </div>
+									 <!-- Start Contact Section Title-->
+									 <div class="section_title remove-background-after padding-bottom-0 padding-top-0">
+										 <div class="panel panel-info panel-body-info">
+											 <div class="panel-body panel-body-notice">
+												<?php the_field('inquiry_notice', false, false); ?>
+											 </div>
+										</div>
+                  </div>
+                 </div>
+             </div>
+
+             <div class="contact_form wow bounceIn">
+                 <div class="container">
+
+									<div class="form-group margin-top-10 col-md-12 padding-lr-0">
+										<?php the_field('inquiry_info', false, false); ?>
+									</div>
+
+									<!-- START ERROR AND SUCCESS MESSAGE -->
+									<div class="form_error text-center">
+										<div class="error-message hide error"></div>
+									</div>
+									<div class="Sucess"></div>
+									<!-- END ERROR AND SUCCESS MESSAGE -->
+
+									<!-- CONTACT FORM -->
+									<?php the_field('inquiry_email_form', false, false); ?>
+									<!-- END FORM -->
+                 </div>
+             </div>
+           </div>
+		</section>
+		<!-- END CONTACT -->
+
+	<?php endwhile; endif; ?>
+
+	<div class="modal fade" id="confirmation-modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Confirmation</h4>
+				</div>
+				<div class="modal-body">
+					Are you sure you want to send this email?
+				</div>
+				<div class="modal-footer margin-top-0">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary confirm-question-answer-btn">Send</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+	<!-- CUSTOM SCRIPT ONLY FOR THIS PAGE -->
+	<script type="text/javascript">
+		$( document ).ready( function () {
+			/**
+			 * Initialize date picker
+			 *
+			 */
+			$( '#due_date' ).datepicker( {
+				format: "mm/dd/yyyy",
+				autoclose: true
+			} );
+
+			/**
+			 * Customize tags input
+			 *
+			 */
+			 $( '.bootstrap-tagsinput' ).addClass( 'form-control form-control-v2' );
+		} );
+	</script>
+	<!-- END CUSTOM SCRIPT -->
+
+<?php get_footer(); ?>

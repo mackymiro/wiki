@@ -1,0 +1,62 @@
+<?php get_header(); ?>
+
+	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+
+    <!-- =========================
+        START KNOWLEDGE Child SECTION
+    ============================== -->
+    <section class="about page knowledge" id="ABOUT">
+       <div class="inner_about_area">
+         <div class="container">
+             <div class="row">
+                 <div class="col-md-12 wow fadeInLeftBig">
+                   <div class="section_title section-title-custom">
+                       <h2><?php echo the_title(); ?></h2>
+                   </div>
+                 </div>
+             </div>
+
+						 <?php if( have_rows('knowledge_tabs_contents') ): ?>
+	             <div class="row">
+								 <!-- Nav tabs -->
+								 <div class="col-xs-4 col-md-3">
+									 <ul class="nav nav-tabs tabs-left" id="myTabs">
+										 <?php $i=0; ?>
+										 <?php while( have_rows('knowledge_tabs_contents') ) : the_row(); ?>
+											 <li class="<?php echo $i==0 ? 'active' : '' ?>"><a href="#<?php the_sub_field('knowledge_tab_id'); ?>" data-toggle="tab"><?php the_sub_field('knowledge_tab_label'); $i++; ?></a></li>
+										 <?php endwhile; ?>
+									 </ul>
+								 </div>
+								 <!-- End Nav tabs  -->
+
+								 <!-- Tab Pane  -->
+								 <div class="col-xs-7 col-md-9">
+									 <div class="tab-content">
+										 <?php $i=0; ?>
+										 <?php while( have_rows('knowledge_tabs_contents') ) : the_row(); ?>
+												<div class="tab-pane <?php echo $i==0 ? 'active' : '' ?>" id="<?php the_sub_field('knowledge_tab_id'); ?>">
+											 	 	<?php the_sub_field('knowledge_tab_content', false, false); $i++; ?>
+												</div>
+										 <?php endwhile; ?>
+									 </div>
+								 </div>
+								 <!-- End Tab Pane -->
+							 </div>
+						 <?php endif; ?>
+
+             <!-- Back Button -->
+             <div class="row">
+               <div class="col-md-12 col-xs-12 padding-bt-20">
+                 <a href="<?php echo site_url() . get_field('back_button'); ?>" class="pull-right"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Back To List</a>
+               </div>
+             </div>
+             <!-- End Back Button -->
+
+          </div>
+      </div>
+    </section>
+    <!-- End KNOWLEDGE Child -->
+
+	<?php endwhile; endif; ?>
+
+<?php get_footer(); ?>

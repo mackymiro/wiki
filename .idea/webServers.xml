@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="c47545a8-53f6-4e23-92b7-4e352c41c77b" name="oss-tc" url="http://192.168.6.110/oss-tc/portal/">
+        <fileTransfer host="192.168.6.110" port="22">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

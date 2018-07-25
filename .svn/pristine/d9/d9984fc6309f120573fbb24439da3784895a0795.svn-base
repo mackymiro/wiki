@@ -1,0 +1,132 @@
+<?php get_header(); ?>
+
+	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+
+    <!-- =========================
+        START FAQ Child SECTION
+    ============================== -->
+    <section class="about page knowledge" id="ABOUT">
+       <div class="inner_about_area">
+         <div class="container">
+             <div class="row">
+                 <div class="col-md-12 wow fadeInLeftBig">
+                   <div class="section_title section-title-custom">
+                       <h2>Question</h2>
+                   </div>
+                 </div>
+             </div>
+             <div class="row">
+               <div class="col-md-12 wow fadeInLeftBig">
+                 <div class="col-md-12 col-xs-12">
+                   <!-- FAQ Child Title -->
+                   <div class="page-header margin-top-10">
+                     <h1 class="margin-top-10">
+                       <?php
+                        $title = preg_replace( '/\?/', '', get_the_title() );
+                       ?>
+                       <small><?php echo $title; ?><i class="fa fa-question" aria-hidden="true"></i></small>
+                     </h1>
+                   </div>
+                   <!-- End Faq Child Title -->
+
+                   <!-- Problems -->
+                   <?php if( have_rows('faq_problems') ): ?>
+                     <?php while( have_rows('faq_problems') ): the_row(); ?>
+                       <div class="col-md-12 col-xs-12">
+                         <div class="col-md-12 col-xs-12">
+                           <h4>Problems:</h4>
+                           <?php if( have_rows('faq_problem') ): ?>
+                             <blockquote>
+                               <ul class="faq-list">
+                                 <?php while ( have_rows('faq_problem') ): the_row(); ?>
+                                   <li><?php echo get_sub_field('faq_problem_text', false, false); ?></li>
+                                 <?php endwhile; ?>
+                               </ul>
+                             </blockquote>
+                           <?php endif; ?>
+                         </div>
+                         <?php if( get_sub_field('faq_problem_image') ): ?>
+                           <div class="thumbnail col-md-12 col-xs-12" style="border: 0;">
+                             <img src="<?php echo get_sub_field('faq_problem_image')['url']; ?>" alt="">
+                           </div>
+                         <?php endif; ?>
+                         <?php the_sub_field('faq_problem_note', false, false); ?>
+                       </div>
+                    <?php endwhile; ?>
+                   <?php endif; ?>
+                   <!-- End Problems -->
+
+                   <!-- Findings -->
+                   <?php if( have_rows('faq_findings') ): ?>
+                     <?php while( have_rows('faq_findings') ): the_row(); ?>
+                       <div class="col-md-12 col-xs-12 margin-top-10">
+                         <div class="col-md-12 col-xs-12">
+                           <h4>Findings:</h4>
+                           <?php if( have_rows('faq_finding') ): ?>
+                             <blockquote>
+                               <ul class="faq-list">
+                                 <?php while ( have_rows('faq_finding') ): the_row(); ?>
+                                   <li><?php echo get_sub_field('faq_finding_text', false, false); ?></li>
+                                 <?php endwhile; ?>
+                               </ul>
+                             </blockquote>
+                           <?php endif; ?>
+                         </div>
+                         <?php if( get_sub_field('faq_finding_image') ): ?>
+                           <div class="thumbnail col-md-12 col-xs-12" style="border: 0;">
+                             <img src="<?php echo get_sub_field('faq_finding_image')['url']; ?>" alt="">
+                           </div>
+                         <?php endif; ?>
+                         <?php the_sub_field('faq_finding_note', false, false); ?>
+                       </div>
+                     <?php endwhile; ?>
+                   <?php endif; ?>
+                   <!-- End Findings -->
+
+                   <!-- Solution -->
+                   <?php if( have_rows('faq_solutions') ): ?>
+                     <?php while( have_rows('faq_solutions') ): the_row(); ?>
+                       <div class="col-md-12 col-xs-12 margin-top-10">
+                         <div class="col-md-12 col-xs-12">
+                           <h4>Solution:</h4>
+                           <?php if( have_rows('faq_solution') ): ?>
+                             <blockquote>
+                               <ul class="faq-list">
+                                 <?php while ( have_rows('faq_solution') ): the_row(); ?>
+                                   <li><?php echo get_sub_field('faq_solution_text', false, false); ?></li>
+                                 <?php endwhile; ?>
+                               </ul>
+                             </blockquote>
+                           <?php endif; ?>
+                         </div>
+                         <?php if( get_sub_field('faq_solution_image') ): ?>
+                           <div class="thumbnail col-md-12 col-xs-12" style="border: 0;">
+                             <img src="<?php echo get_sub_field('faq_solution_image')['url']; ?>" alt="">
+                           </div>
+                         <?php endif; ?>
+                         <?php the_sub_field('faq_solution_note', false, false); ?>
+                       </div>
+                    <?php endwhile; ?>
+                   <?php endif; ?>
+                   <!-- End Solution -->
+
+                 </div>
+               </div>
+             </div>
+
+             <!-- Back Button -->
+             <div class="row">
+               <div class="col-md-12 col-xs-12 padding-bt-20">
+                 <a href="<?php echo site_url() . get_field('back_button'); ?>" class="pull-right"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Back To List</a>
+               </div>
+             </div>
+             <!-- End Back Button -->
+
+          </div>
+      </div>
+    </section>
+    <!-- End FAQ Child -->
+
+	<?php endwhile; endif; ?>
+
+<?php get_footer(); ?>
