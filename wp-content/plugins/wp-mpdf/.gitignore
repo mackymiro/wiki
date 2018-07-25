@@ -1,5 +1,0 @@
-cache/*
-!cache/.gitkeep
-!cache/.htaccess
-
-.idea/
