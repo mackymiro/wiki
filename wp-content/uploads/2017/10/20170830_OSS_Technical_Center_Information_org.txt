@@ -1,0 +1,449 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+　　ＮＳＰ　ＯＳＳ技術センター　インフォメーション
+
+　　　　　　　　　　　　　　　　　　２０１７年０８月３０号
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+＜目次＞
+１．インフォメーション
+２．MySQL Cluster評価                    Update!!
+３．Ansibleサポート　　　　　　　　　　　　　　　         
+４．Zabbixサポート
+５．Redmineサポート　　　　　　　　　　　　　　　
+６．ＤＢ比較ツール　Audit Trigger 91Plus
+７．WebUI自動試験環境の構築支援　Selenium2
+８．リバースエンジニアリングツールの評価
+９．Open DaylightによるVTN構築の検証         Update!!
+10．Stonithサポート                        Update!!
+11．脆弱性の調査サポート　　　　　　　　　　　　 
+12．ポーティングサポート　　　　　　　　　　　　 
+13．Ansible構築サポート 　　　　　　　　　　　　 
+14. Autotesting (Aging)               New!!
+15. Java/Spring Framework             New!!
+16. Middleware Investigation          New!!
+17．Redis Q&A Support                  New!!
+
+■□■━━━━━━━━━━━━━━━━━━━━━━━━━━━
+１．インフォメーション
+━━━━━━━━━━━━━━━━━━━━━━━━━━━■□■
+ＯＳＳ技術センターのご活用有難うございます。
+６月１９日にホームページを開設しました。ホームページのコンテンツ
+拡充を進めております。ご興味がある方は、下記のＵＲＬにアクセス
+して下さい。
+
+http://www.ntsp.nec.co.jp/oss-tc/portal/
+
+ＯＳＳ技術センターの活動で以下のことが出来る様になっています。
+是非、ご活用願います。ホームページから問合せができます。
+日本語による問合せで大丈夫です。
+
+トピックは次の通りです。
+
+・MySQL Cluster
+・OpenDaylight/OpenVSwitch
+・AutoTesting (Aging)
+・Java/Spring Framework
+・Stonith investigation
+・Middleware investigation
+・Redis Q&A Support
+
+
+
+★ＯＳＳ活用相談会を開催中★
+プロジェクトの課題やこんなことが出来たら良いのに、と言った
+要望を伺わせてください。それに合った提案ができないか検討を
+させて頂きます。１名からでもＯＫです。
+開催希望の方は、nsp-oss-tech-center-ml@ntsp.nec.co.jp に
+問合せ願います。
+
+
+■□■━━━━━━━━━━━━━━━━━━━━━━━━━━━
+２．MySQL Cluster評価
+━━━━━━━━━━━━━━━━━━━━━━━━━━━■□■
+MySQL Cluster 7.5の検証を実施しています。主な検証内容は以下の
+通りです。MySQL Clusterの導入を検討されている方、評価結果に
+興味がある方は、ＯＳＳ技術センターへ問合せ願います。
+
+＜１Ｑ実績＞
+MySQL Cluster構築およびコマンド、障害検出方法を検証。
+1. 構築検証
+2. 提供コマンドの検証（設定、表示、バックアップ、リストアなど）
+3. 障害検出方法の検証
+
+＜２Ｑ計画＞
+性能チューニングなど下記の検証を実施中。
+1. パーティショニングの検証
+2. Master-Slave構成の検証
+3. 障害復旧の検証
+4. 性能最適化手法の検証
+5. Supported Q&A regarding performance optimization
+
+
+■□■━━━━━━━━━━━━━━━━━━━━━━━━━━━
+３．Ansibleサポート
+━━━━━━━━━━━━━━━━━━━━━━━━━━━■□■
+Ansibleのモジュール開発、モジュール拡張を実施中です。
+モジュール開発、既存モジュールの使い勝手に不便を感じている方は、
+ＯＳＳ技術センターへ問合せ願います。
+
+1. Pacemakerモジュールの開発
+　→６／２８リリース済み。
+
+2. uriモジュールの機能改善（--upload-fileオプション対応）
+　→７／１３リリース済み。
+
+3. Expectモジュールの Pexpect ver.2.3サポート
+　→８／２リリース済み。
+
+Ansibleに関するＱＡ対応も実施しております。Ansibleに関する質問
+や課題などありましたら、気軽に問合せ願います。これまで、下記の
+問合せなどを受けています。
+
+1. スペースが含まれる変数を指定する方法
+2. 処理途中でユーザに値を入力させ、入力値を表示したい。
+3. 複数ホスト間で変数を共有する方法
+4. タスクに対してタイマを設定する方法
+
+また、Ansibleによる自動試験環境の構築支援を行っています。
+現在、１ＳＤプロジェクトにて、自動試験環境の構築を支援中です。
+試験環境の効率化を検討されている方は、ＯＳＳ技術センターへ
+問合せ願います。
+
+
+■□■━━━━━━━━━━━━━━━━━━━━━━━━━━━
+４．Zabbixサポート
+━━━━━━━━━━━━━━━━━━━━━━━━━━━■□■
+Zabbix の検証を実施しています。主な検証内容は以下の通りです。
+Zabbix の導入を検討されている方は、ＯＳＳ技術センターへ問合せ
+願います。
+
+1. Zabbix構築検証
+2. Zabbix基本機能の検証（監視項目、通知設定など）
+3. 障害検出方法の検証
+
+
+■□■━━━━━━━━━━━━━━━━━━━━━━━━━━━
+５．Redmineサポート
+━━━━━━━━━━━━━━━━━━━━━━━━━━━■□■
+Redmineのプラグイン調査、コード修正による機能拡張を実施中です。
+Redmineの使い勝手に不便を感じている方は、ＯＳＳ技術センターへ
+問合せ願います。これまで、下記の対応を実施しています。
+
+1. 要件にマッチしたプラグイン調査と検証
+　a) 子チケットを作成した時、自動で親チケットを番号を設定したい。
+　b) チケット一括登録と更新を行いたい。（現状、更新が出来ない）
+　c) チケットの添付ファイルの中まで検索したい。
+　　※日本語文字は未サポートです。対処方法を調査中。
+
+2. ソースコード修正による対応
+　a) 検索する際にそのプロジェクトのサブプロジェクトを合わせて
+　　 検索するようなオプションがほしい。
+　b) チケット履歴の日付をJSTで、時間も含め(yyyy/mm/dd hh:mm:ss 
+　　 のイメージ)表示したい。
+
+3. その他
+　a) ユーザをロックするとロックしたユーザが関連していたチケット
+　　 のユーザ名は灰色になる。→ Redmine 2.5.0でBugFIX
+　b) 右クリックでテキストフィールドの中身を一括更新する場合に
+　　”空欄”に更新したい。→ Redmine 2.4.0でBugFIX
+
+4. 下記パッチを、Redmineバージョン 2.3.0 から 3.3.3 に対応。
+　a) 子チケットを作成した時、自動で親チケットを番号を設定したい。
+　b) チケットの添付ファイルの中まで検索したい
+　c) チケット履歴の日付をJSTで、時間も含め(yyyy/mm/dd hh:mm:ss 
+　　 のイメージ)表示したい。
+
+
+■□■━━━━━━━━━━━━━━━━━━━━━━━━━━━
+６．ＤＢ比較ツール　Audit Trigger 91Plus　※PostgreSQL用
+━━━━━━━━━━━━━━━━━━━━━━━━━━━■□■
+試験前と試験後のデータベースの差分が確認出来るツールを提供
+します。試験担当者は簡単な操作でデータベースの差分確認や
+エビデンスの保存が出来る様になります。利用される方は、
+ＯＳＳ技術センターへ問合せ願います。
+
+
+■□■━━━━━━━━━━━━━━━━━━━━━━━━━━━
+７．WebUI自動試験環境の構築支援　Selenium2
+━━━━━━━━━━━━━━━━━━━━━━━━━━━■□■
+これまで、自動試験が難しかった、ネットワークトポロジー画面から
+の自動試験シナリオの構築を支援します。
+２ＳＤプロジェクトにて、Ｌ２パス、Ｌ１パスの自動試験シナリオを
+対応中です。自動試験による効率化を検討されている方は、
+ＯＳＳ技術センターへ問合せ願います。
+
+
+■□■━━━━━━━━━━━━━━━━━━━━━━━━━━━
+８．リバースエンジニアリングツールの評価
+━━━━━━━━━━━━━━━━━━━━━━━━━━━■□■
+これまで、Ｗｅｂクライアント開発言語であるHTML、JavaScriptなど
+をリバースエンジニアリングするツールが整備されていませんでした。
+下記のツールを検証し、利用方法を整備中です。利用される方は、
+ＯＳＳ技術センターへ問合せ願います。
+
+1.リバースエンジニアリングツール調査
+　WAVI、Code2Flow、VISUSTIN, Understand
+
+2.コードチェックツール調査
+　ESLint、JSHint
+
+
+■□■━━━━━━━━━━━━━━━━━━━━━━━━━━━
+９．Open DaylightによるVTN構築の検証
+━━━━━━━━━━━━━━━━━━━━━━━━━━━■□■
+Open Daylight、Open vSwitchを用いて、VTN環境の構築検証を開始
+しました。
+
+We have successfully setup the VTN
+using virtual environment. We are now on the 
+process of setting-up using physical devices.
+
+
+■□■━━━━━━━━━━━━━━━━━━━━━━━━━━━
+10．Stonithサポート
+━━━━━━━━━━━━━━━━━━━━━━━━━━━■□■
+Stonithは、高可用性クラスタリングシステムでスプリットブレイン
+現象を検出した際、強制的に対向サーバを再起動(フェンシング)する
+ことで、最悪の事態（両現用）を回避することができます。
+
+Stonith has Node fencing and resource fencing.
+We have successfully configured Node fencing of 
+Stonith in an existing project. We are now 
+proceeding configuration for resource fencing.
+
+利用される方は、ＯＳＳ技術センターへ問合せ願います。
+
+
+■□■━━━━━━━━━━━━━━━━━━━━━━━━━━━
+11．脆弱性の調査サポート
+━━━━━━━━━━━━━━━━━━━━━━━━━━━■□■
+SSLExt脆弱性の調査方法を調査。
+
+
+■□■━━━━━━━━━━━━━━━━━━━━━━━━━━━
+12．ポーティングサポート
+━━━━━━━━━━━━━━━━━━━━━━━━━━━■□■
+Internet Explorer11からFirefoxへのポーティング調査を開始。
+
+
+■□■━━━━━━━━━━━━━━━━━━━━━━━━━━━
+13．Ansible構築サポート
+━━━━━━━━━━━━━━━━━━━━━━━━━━━■□■
+ＰＪが作成したインストールマニュアルからAnsibleで使うPlayBook
+の作成および評価支援を開始。
+
+
+ＯＳＳ技術センターは、ＮＳＤ全プロジェクトのＯＳＳ活用を全力で
+支援してまいります。今後ともよろしくお願いいたします。
+
+■□■━━━━━━━━━━━━━━━━━━━━━━━━━━━
+14．AutoTesting (Aging)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━■□■
+We are currently supporting aging test using 
+selenium 2 and system scheduler. Selenium 2 is
+used for automatically testing GUI related actions
+while system scheduler is used for sequencing 
+and timing of selenium 2 test items.
+
+■□■━━━━━━━━━━━━━━━━━━━━━━━━━━━
+15．Tomcat Upgrade
+━━━━━━━━━━━━━━━━━━━━━━━━━━━■□■
+The Apache Tomcat team announces that support 
+for Apache Tomcat 8.0.x will end on 30 June 2018. 
+Questions about upgrading tomcat are the following:
+	1. What version should be upgraded to? 
+	2. What impact may have in Java application? 
+	3. Is there some changed/deleted parameters? 
+	4. How should be upgrade? (upgrade procedure)
+
+1. What version should be upgraded to? 
+--------------------------------------
+Apache Tomcat 8.5.x is intended to replace 8.0.x 
+and includes new features pulled forward 
+from Tomcat 9.0.x (currently on its alpha version). 
+
+2. What impact may have in Java application? 
+--------------------------------------------
+The minimum Java version (Java 7) and implemented 
+specification versions remain unchanged
+Applications using features, APIs, etc. that no 
+longer exist in version 8.5.x might be affected. 	
+	
+3. Is there some changed/deleted parameters? 
+--------------------------------------------	
+See table below for the summary of the changes 
+in the parameters:
+
+Removed Parameters:
+-------------------
+・ BIO connector removed
+・ Comet support removed
+・ JSR-77 Implementation removed
+・ InstanceListener classes removed
+・ Attributes removed:
+	- Digest
+	- MessageDispatch15Interceptor
+	- clearReferenceStatic
+		
+Added Parameters:
+-------------------
+・ HTTP/2 support added
+・ TLS Virtual Hosting & Multiple Certificate support added
+
+Changed Parameters:
+-------------------
+・ Default Cookie Processor :
+  New default cookie processor to support better interoperability
+  Configurable to use the previous default(LegacyCookieProcessor)
+  
+・ AuthenticatorBase Implementation :
+  Authenticate() has been changed to doAuthenticate()
+  
+・ Session Manager Attributes :
+  Attributes has been deprecated and ignored
+  Configurable in /WEB-INF/web.xml to specify values
+
+4. How should be upgrade? (upgrade procedure)
+---------------------------------------------	
+Summarized steps are as follows. For the detailed procedure, contact NSP OSS-TC team.
+
+[1] Download and Unzip Tomcat
+[2] Create a Backup
+[3] Shutdown Existing Tomcat
+[4] Transfer Configuration Files
+[5] Startup new Tomcat
+[6] Test new Tomcat
+
+■□■━━━━━━━━━━━━━━━━━━━━━━━━━━━
+15．Porting of UNMS Client from IE to Firefox
+━━━━━━━━━━━━━━━━━━━━━━━━━━━■□■
+NSP OSS Technical Center received the following 
+inquiry from Client:
+
+	クライアントのWebブラウザーをIEからFireFoxへの乗せ代えを検討しています。
+	両バージョンとも最新版です。
+	乗せ代えの検討ポイントを教えていただきたいです。
+	・評価観点
+	・UNMSはjQueryやJavaScriptを使っています。FireFoxにすることでコードの修正が必要になるか？
+	・コードの修正が必要になる場合の、修正箇所を特定する方法
+	・IE互換のようなオプションはないでしょうか？
+
+The investigation results are as follows:
+
+・評価観点 
+(Evaluation viewpoint)
+-------------------------------
+Analysis:
+- Firefox can be used to access UNMS but with some  
+issues especially regarding with UI.  Refer to (1)
+- Regression test should be done to list all possible
+issues so we could determine the scope
+
+
+・UNMSはjQueryやJavaScriptを使っています。FireFoxにすることでコードの修正が必要になるか？
+(UNMS uses jQuery and JavaScript. Is it necessary to modify 
+ the code by making it FireFox?)
+------------------------------------------------------------------
+There will be some necessary modification since there are 
+some issues when running UNMS in FireFox.
+These are the sample issues found:
+- at index.html: the table columns are not align
+- clicking the NE node does not highlight it (except path creation)
+- right-click the NE node display "Map View Off" only (except path line)
+- the NE nodes dispay at index.html somestimes does not display and 
+you have to move it to make it show
+
+
+・コードの修正が必要になる場合の、修正箇所を特定する方法
+(How to identify the fixes when code correction is required)
+------------------------------------------------------------
+That would require another investigation to determine which 
+part of the code need to be fix for Firefox.
+An example on what to identify for code correction:
+? Resources/Assets being used  (i.e.  jQuery, Bootstrap, etc.)
+? Compatibility of the resources / assets being used
+? Determining important operations that should be available 
+and the resources / assets that it was using
+
+・IE互換のようなオプションはないでしょうか？
+(Is there an option like IE compatibility?)
+-------------------------------------------
+FireFox does not have IE compatibility feature.
+
+■□■━━━━━━━━━━━━━━━━━━━━━━━━━━━
+15．HeapDump Retrieval in JRE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━■□■
+NSP OSS Technical Center received the following 
+inquiry from Client:
+
+	客先はJREを使っており、ヒープダンプを取得することができませんでした。
+	MemoryAnalyzerで解析することが目的です。
+	・JREだけでヒープダンプを取得する方法がないでしょうか？
+	・JDKの一部のコピーすればヒープダンプを取得することができますか？
+	・この場合、JDKのライセンスが必要になるか、再配布可能ファイルなのか、確認していただけますか？
+
+The investigation results are as follows:
+
+・JREだけでヒープダンプを取得する方法がないでしょうか？
+(Isn't there a way to acquire a heap dump only in JRE?)
+-------------------------------------------------------
+Yes, but there are some issues(in terms of licensing)
+
+
+・JDKの一部のコピーすればヒープダンプを取得することができますか？
+(Of the part of JDK, when copying, is it possible 
+to acquire a heap dump?)
+------------------------------------------------------------
+Yes, it's possible by doing some necessary steps.
+For the steps, please contact NSP OSS-TC engineer.
+
+
+・この場合、JDKのライセンスが必要になるか、再配布可能ファイルなのか、確認していただけますか？
+(Could you confirm whether it's a redistribution possible 
+file whether you need a license of JDK in this case?)
+------------------------------------------------------------
+This is not allowed based from the Redistribution Policy of JDK. 
+In order to use the said files in the JRE Workaround this 
+should be accompanied with 
+the corresponding JRE Distribution together with the JDK.
+For the licensing issues, please contact NSP OSS-TC engineer.
+
+■□■━━━━━━━━━━━━━━━━━━━━━━━━━━━
+15．Java/Spring Framework incompatibility
+━━━━━━━━━━━━━━━━━━━━━━━━━━━■□■
+NSP OSS Technical Center received the following 
+inquiry from Client:
+
+   添付水平展開において、調査対象jarファイルに関し、
+   同様の問題がOSSソースファイル上で、存在しないかを調査できますでしょうか
+
+Version:
+  Java 1.8
+  Spring Framework 2.5.6
+  
+The investigation results are as follows:
+  All 191 Jar files were checked.
+  12 jar files were not checked because we cannot 
+  find a reference from the internet.
+  
+  150 jar files have no issues. 29 jar files have 
+  where issues were identified.
+
+■□■━━━━━━━━━━━━━━━━━━━━━━━━━━━
+16．Middleware Investigation
+━━━━━━━━━━━━━━━━━━━━━━━━━━━■□■
+We are performing an investigation to replace an
+existing integrated middleware. We are searching
+for an alternative OSS for each functioanly the 
+current system is supporting.
+
+■□■━━━━━━━━━━━━━━━━━━━━━━━━━━━
+17．Redis Q&A Support
+━━━━━━━━━━━━━━━━━━━━━━━━━━━■□■
+We have supported Redis Q&A in regards to 
+processing power and performance tuning.
+
+
+以上
+
+
+

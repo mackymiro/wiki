@@ -1,0 +1,5 @@
+hosts := []
+hosts[1] := { hostname: "[host_hostname]", username: "[host_username]", password: "[host_password]" }
+hosts[2] := { hostname: "[host_hostname]", username: "[host_username]", password: "[host_password]" }
+hosts[3] := { hostname: "[host_hostname]", username: "[host_username]", password: "[host_password]" }
+hosts[4] := { hostname: "[host_hostname]", username: "[host_username]", password: "[host_password]" }

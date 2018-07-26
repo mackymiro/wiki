@@ -1,0 +1,77 @@
+ConnectToHost( hostname ) {									
+	windowTitle = Remote Desktop Connection								
+	ControlSetText, Edit1, %hostname%, %windowTitle%								
+	SetControlDelay, 0								
+	ControlClick, Button5, %windowTitle%, Co&nnect								
+}									
+									
+LoginToHost( credentials ) {									
+	windowTitle = Windows Security								
+	inputNumber := 1								
+	ControlGet, usernameField, Visible,, Edit2, %windowTitle%								
+	if ( usernameField = "" ) {								
+		SetControlDelay, 0							
+		ControlClick, DirectUIHWND1, %windowTitle%							
+		inputNumber := 2							
+	}								
+	Sleep, 1000								
+	ControlSetText, Edit%inputNumber%, % credentials.username, %windowTitle%								
+	Sleep, 1000								
+	inputNumber += 1								
+	ControlSetText, Edit%inputNumber%, % credentials.password, %windowTitle%								
+	Sleep, 1000								
+	ControlClick, Button2, %windowTitle%, OK								
+	windowTitle = Remote Desktop Connection								
+	Sleep, 2000								
+	ControlClick, Button5, %windowTitle%, &Yes								
+}									
+									
+TargetHostWindowTasks( credentials ) {									
+	windowTitle = Remote Desktop Connection								
+	hostTitle = % credentials.hostname . " - " . windowTitle								
+	helloWorld := [ "H", "e", "l", "l", "o", "Space", "W", "o", "r", "l", "d" ]								
+	WinGetPos, , , hostW, hostH, %hostTitle%								
+	if ( hostW != A_ScreenWidth or hostH != A_ScreenHeight ) {								
+		Send, ^!{CtrlBreak}							
+	}								
+	Sleep, 1000								
+	ControlSend, , {LWin}, %hostTitle%								
+	Sleep, 1000								
+	ControlSend, , Notepad{Enter}, %hostTitle%								
+	Sleep, 1000								
+	Loop % helloWorld.Length()								
+	{								
+		key := helloWorld[A_Index]							
+		Sleep, 100							
+		ControlSend, , {%key%}, %hostTitle%							
+	}								
+	CoordMode, Pixel								
+	ImageSearch, notepadX, notepadY, 0, 0, A_ScreenWidth, A_ScreenHeight, %A_WorkingDir%\Notepad.bmp								
+	if ( ErrorLevel != 0 ) {								
+		MsgBox Icon could not be found on the screen or Could not conduct the search.							
+	} else {								
+		MouseClick, Right, %notepadX%, %notepadY%, , 30							
+		ControlSend, , {o}, % credentials.hostname . " - " . windowTitle							
+		Sleep, 1000							
+		CoordMode, Pixel							
+		ImageSearch, newNotepadX, newNotepadY, 0, 0, A_ScreenWidth, A_ScreenHeight, %A_WorkingDir%\NewNotepad.bmp							
+		if ( ErrorLevel != 0 ) {							
+			MsgBox Icon could not be found on the screen or Could not conduct the search.						
+		} else {							
+			MouseClick, Left, %newNotepadX%, %newNotepadY%, , 30						
+			Loop % helloWorld.Length()						
+			{						
+				key := helloWorld[A_Index]					
+				Sleep, 100					
+				ControlSend, , {%key%}, % credentials.hostname . " - " . windowTitle					
+			}						
+		}							
+	}								
+	Sleep, 1000								
+	WinClose, %hostTitle%								
+	IfWinExist, %windowTitle%								
+	{								
+		Sleep, 1000							
+		ControlClick, Button1, %windowTitle%, OK							
+	}								
+}									

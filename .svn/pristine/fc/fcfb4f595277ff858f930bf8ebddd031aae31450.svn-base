@@ -1,0 +1,59 @@
+<?php get_header(); ?>
+
+  <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+
+    <!-- =========================
+        START Knowledge SECTION
+    ============================== -->
+    <section class="about page knowledge" id="ABOUT">
+      <div class="inner_about_area">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 wow fadeInLeftBig">
+              <div class="section_title section-title-custom">
+                <?php the_field('page_description', false, false); ?>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-12 wow fadeInLeftBig table-responsive">
+              <table class="dataTables table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                <thead>
+                  <tr>
+                    <th class="width-50"></th>
+                    <th>Name</th>
+                    <th>Catergory</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <?php
+                   $knowledges = get_posts(array(
+                     'numberposts' => -1,
+                     'post_type' => 'knowledge',
+                     'post_status' => 'publish'
+                   ));
+                 ?>
+                 <?php foreach ($knowledges as $knowledge):
+                   $category = get_post_custom($knowledge->ID)['knowledge_category'][0];
+                   $description = get_post_custom($knowledge->ID)['knowledge_description'][0];
+                 ?>
+                   <tr>
+                     <td></td>
+                     <td><a href="<?php echo get_permalink($knowledge->ID); ?>"><?php echo $knowledge->post_title; ?></a></td>
+                     <td><?php echo $category; ?></td>
+                     <td><?php echo $description; ?></td>
+                   </tr>
+                 <?php endforeach; ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Knowledge -->
+
+  <?php endwhile; endif; ?>
+<?php get_footer(); ?>

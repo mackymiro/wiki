@@ -1,0 +1,118 @@
+<?php get_header(); ?>
+
+	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+
+		<!-- =========================
+				 START HEADER SECTION
+		============================== -->
+    <section class="header parallax home-parallax page" id="HOME">
+        <div class="section_overlay">
+            <div class="container home-container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="logo text-center">
+													<!-- LOGO -->
+													<img src="<?php echo get_template_directory_uri(); ?> /assets/images/logo.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="home_text">
+                            <!-- TITLE AND DESC -->
+                            <h1>Find what you need <u>HERE</u>.</h1>
+                            <p>Open Source Software™ helps open source developers spread their works to those who also</p>
+                            <p>needs their help by gathering open source projects into one place.</p>
+
+                            <div class="download-btn">
+                            <!-- BUTTON -->
+                                <a class="tuor btn wow fadeInRight arrow-down-custom" href="#ABOUT"><i class="arrow-down-custom fa fa-angle-down"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+		<!-- END HEADER SECTION -->
+
+
+		<!-- =========================
+				 START ABOUT US SECTION
+		============================== -->
+    <section class="about page about-override" id="ABOUT">
+        <div class="inner_about_area">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-6 wow fadeInLeftBig">
+											<!-- MISSION & VISION LEFT TITLE -->
+                      <div class="video_title">
+												<?php the_field('mission', false, false); ?>
+                      </div>
+
+                      <div class="video_title padding-top-20">
+												<?php the_field('vision', false, false); ?>
+                      </div>
+                  </div>
+                  <div class="col-md-6 wow fadeInRightBig padding-top-70">
+                       <!-- PPT -->
+                       <div id="carousel-mission-vission" class="carousel slide" data-ride="carousel" data-interval="false">
+
+                           <!-- Wrapper for slides -->
+													 <?php $i=0; ?>
+                           <div class="carousel-inner no-border-img">
+														<?php if( have_rows('presentation') ): ?>
+																 <?php while( have_rows('presentation') ): the_row(); ?>
+																 <div class="item <?php echo $i==0 ? 'active' : ''; ?>">
+																	 <div class="col-md-12 text-center" onclick="viewImage('<?php echo get_sub_field('image')['url']; ?>')">
+																			 <!-- IMAGE -->
+																			 <img src="<?php echo get_sub_field('image')['url']; ?>" alt="" width="320"  height="320">
+																	 </div>
+																 </div>
+																 <?php $i++; ?>
+															<?php endwhile; ?>
+														<?php endif; ?>
+                           </div>
+
+                           <!-- Left and right controls -->
+                          <a class="left carousel-control" href="#carousel-mission-vission" data-slide="prev">
+                            <span class="fa fa-arrow-left carousel-control-buttons" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                          <a class="right carousel-control" href="#carousel-mission-vission" data-slide="next">
+                            <span class="fa fa-arrow-right carousel-control-buttons" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                          </a>
+                       </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+        <div class="video_area">
+            <div class="container">
+                <div class="section_title section-title-custom">
+                    <h2>MENU</h2>
+                </div>
+								<?php the_field('menu', false, false); ?>
+            </div>
+        </div>
+    </section>
+    <!-- End About Us -->
+
+	<?php endwhile; endif; ?>
+
+	<!-- Modal -->
+	<div class="modal fade" id="mission-vision-image-viewer" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header" style="border-bottom:0;">
+					<button type="button" class="close" style="margin-top:-12px !important" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+				<img id="img-src" width="100%">
+			</div>
+		</div>
+	</div>
+	<!-- End Modal -->
+
+<?php get_footer(); ?>

@@ -1,0 +1,105 @@
+<?php get_header(); ?>
+
+  <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+
+    <!-- =========================
+        START Bug Patches SECTION
+    ============================== -->
+    <section class="about page knowledge" id="ABOUT">
+      <div class="inner_about_area">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 wow fadeInLeftBig">
+              <div class="section_title section-title-custom">
+                <?php the_field('page_description', false, false); ?>
+              </div>
+            </div>
+          </div>
+          <br>
+
+          <div class="row">
+            <div class="col-md-12 wow fadeInLeftBig">
+              <div class="accordion" id="myAccordion">
+
+                <?php $i=1; ?>
+                <?php if( have_rows('bug_patch_labels_contents') ): while( have_rows('bug_patch_labels_contents') ): the_row(); ?>
+                <?php
+                  $label = get_sub_field('bug_patch_label');
+                  $content = get_sub_field('bug_patch_content');
+                ?>
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                      <a role="button" class="<?php echo $content ? 'color-blue' : 'color-gray' ?>" data-toggle="<?php echo $content ? 'collapse' : '' ?>" data-target="#collapsible-<?php echo $i; ?>" data-parent="#myAccordion" aria-expanded="true" aria-controls="collapseOne">
+                        <?php echo $i .'. ' . $label;  ?>
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapsible-<?php echo $i; ?>" class="collapse">
+                    <div class="panel-body">
+                      <?php the_sub_field('bug_patch_content'); ?>
+                    </div>
+                  </div>
+                </div>
+                <?php $i++; ?>
+                <?php endwhile; endif; ?>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- End Bug Patches -->
+
+    <!-- =========================
+         Start Subscription Form
+    ============================== -->
+    <section class="subscribe parallax subscribe-parallax" data-stellar-background-ratio="0.6" data-stellar-vertical-offset="20">
+        <div class="section_overlay wow lightSpeedIn">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Start Subscribe Section Title -->
+                        <div class="section_title">
+                            <h2>SUBSCRIBE</h2>
+                        </div>
+                        <!-- End Subscribe Section Title -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+              <div class="row wow lightSpeedIn">
+                <?php the_content() ?>
+                <?php the_field('bug_patch_subscribe_form', false, false); ?>
+              </div>
+            </dv>
+        </div>
+    </section>
+    <!-- END SUBSCRIPBE FORM -->
+
+  <?php endwhile; endif; ?>
+
+  <!-- CUSTOM SCRIPT ONLY FOR THIS PAGE -->
+  <script type="text/javascript">
+    $( document ).ready( function () {
+      /**
+			 * Initialize date picker
+			 *
+			 */
+			$( '#start_date, #end_date' ).datepicker( {
+				format: "mm/dd/yyyy",
+				autoclose: true
+			} );
+
+      /**
+       * Add class for wpcf7-form class
+       */
+       $('.wpcf7-form').addClass('subscribe_form');
+    } );
+  </script>
+  <!-- END CUSTOM SCRIPT -->
+
+<?php get_footer(); ?>
