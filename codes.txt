@@ -1,0 +1,57 @@
+98V335brM8Ad
+macky@nec
+
+
+
+oss-tech-center-ml@ntsp.nec.co.jp
+
+wp admin access
+admin
+U4dkz5CcnO
+
+
+wp admin access new password
+admin
+TPg(Cl99nm#N!EAUph%@g8fy
+
+
+
+
+xykiQLOq2P6c
+
+oss-tech-center-ml@ntsp.nec.co.jp
+
+
+Alias /oss-tc/oss /var/www/oss_hp_tmp/oss
+<Location /oss-tc/root/oss_hp_tmp/oss>
+
+
+</Location>
+
+
+Development Site
+IP: 192.168.6.110
+MySQL DB: oss-wp
+DBuid: oss
+DBuidpwd: p455werd
+User: root
+Password: OSS-t3ch
+
+
+Production site
+Server IP: 192.168.6.99
+Protocol:  SSH / SFTP
+Directories:
+
+                                /var/www/oss_hp_tmp/dev
+                                /var/www/oss_hp_tmp/wordpress
+
+System Accounts
+miro.mm             - xykiQLOq2P6c
+
+IgxKcamCS%H82QmDfd
+
+
+
+120,57,15
+
